@@ -12,6 +12,8 @@ Docker and docker-compose was used in this repository, so should be easy to run.
 First download the RAW_recipes.csv dataset from Kaggle:
 https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions?select=RAW_recipes.csv
 
+Place the RAW_recipes.csv file into the "data" folder, creating the folder if it doesn't exist.
+
 Then build the python docker image
 > docker-compose build
 
