@@ -21,6 +21,9 @@ Run the following script, which will download sentence models from SBERT, embed 
 Finally, run the API with:
 > docker-compose up
 
+Note, that for ease of starting, the initial dataset is limited to just 1000 results, you can change the NROWS variable
+in semantic_search/documents.py to increase that number. It will take longer to build the ANN index the larger that number is.
+
 
 ## Credit
 Shout out to this example:

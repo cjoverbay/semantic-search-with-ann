@@ -4,7 +4,7 @@ import json
 # Load the documents that we want to embed
 # In this case it is a set of recipes from
 # https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions?select=RAW_recipes.csv
-NROWS = 10000
+NROWS = 1000
 documents_file = '../data/RAW_recipes.csv'
 
 print(f'Loading documents {documents_file}...')
