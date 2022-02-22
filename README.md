@@ -9,11 +9,16 @@ It comes with a simple flask API and frontend for searching recipes (uses Bulma 
 Docker and docker-compose was used in this repository, so should be easy to run.
 
 ## Quick Start
-Downloads the dataset from Kaggle, the sentence models from SBERT, builds the ann index.
+First download the RAW_recipes.csv dataset from Kaggle:
+https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions?select=RAW_recipes.csv
+
+Then build the python docker image
 > docker-compose build
+
+Run the following script, which will download sentence models from SBERT, embed the recipe documents, and build the ann index.
 > docker-compose run semantic_search python build_index.py 
 
-Run the API with:
+Finally, run the API with:
 > docker-compose up
 
 
