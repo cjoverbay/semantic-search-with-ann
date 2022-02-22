@@ -1,0 +1,19 @@
+version: '3'
+services:
+  semantic_search:
+    build:
+      context: ./semantic_search
+      dockerfile: ../Dockerfile
+    container_name: semantic_search
+    command: python host_api.py
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./data:/data"
+      - "./semantic_search:/code"
+    environment:
+      - "FLASK_APP=app.py"
+      - "FLASK_ENV=development"
+      - "FLASK_DEBUG=1"
+      - "FLASK_RUN_PORT=5000"
+    restart: always

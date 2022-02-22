@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale">
+        <title>Semantic Search</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <section class="container is-fluid">
+            <form id="searchForm" action="/" method="GET">
+                <div class="field has-addons">
+                    <div class="control">
+                      <div class="select">
+                        <select name="n" id="n">
+                          {% for i in [1, 9, 21, 42] %}
+                          <option {% if n==i %}selected{% endif %}>{{i}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="control">
+                      <input class="input" name="query" id="query" type="text" value="{% if query %}{{query}}{% else %}banana{% endif %}">
+                    </div>
+                    <div class="control">
+                      <button class="button is-primary">
+                        Search
+                      </button>
+                    </div>
+                  </div>
+            </form>
+        </section>
+        <section class="container is-fluid">
+            <p class="is-italic has-text-grey">Showing {{n}} results per page</p>
+            {% for i in range(0, search_results.shape[0], 3) %}
+            <div class="tile is-flex is-ancestor">
+                {% for j in range(3) %}
+                    {% set result = search_results.iloc[i+j] %}
+                    {% if result is defined %}
+                        <div class="tile is-vertical is-parent is-4">
+                            <div class="tile is-child box content">
+                                <h2 class="is-capitalized">{{ result['name'] }}</h2>
+                                <p class="subtitle">{{ result['description'] }}</p>
+                                <h4>Ingredients</h4>
+                                <ul>
+                                    {% for ingredient in result['ingredients'] %}
+                                        <li>{{ ingredient }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <h4>Tags</h4>
+                                {% for tag in result['tags'] %}
+                                    <span class="tag is-light">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </section>
+    </body>
+</html>
