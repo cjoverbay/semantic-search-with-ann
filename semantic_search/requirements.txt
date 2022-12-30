@@ -1,5 +1,5 @@
-annoy==1.17.0
-Flask==2.0.3
-numpy==1.22.1
-pandas==1.4.0
-sentence-transformers==2.2.0
+annoy==1.17.1
+Flask==2.2.2
+numpy==1.24.1
+pandas==1.5.2
+sentence-transformers==2.2.2
